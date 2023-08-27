@@ -1,0 +1,13 @@
+<h2>User2 Login</h2>
+<form method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="user2_username">Username:</label>
+        <input type="text" id="user2_username" name="user2_username" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="user2_password">Password:</label>
+        <input type="password" id="user2_password" name="user2_password" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+</form>

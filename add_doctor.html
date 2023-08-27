@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Doctor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('input').focus(function() {
+                $(this).addClass('input-focus');
+            });
+            $('input').blur(function() {
+                $(this).removeClass('input-focus');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <img src="{% static 'img.jpeg' %}" alt="img" style="width: 1500px; height: 1000;">
+    </div>
+    <h1>Add Doctor</h1>
+    <form method="POST" action="{% url 'add_doctor' %}">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+
+        <label for="specialization">Specialization:</label>
+        <select name="specialization" required>
+            <option value="">Select Specialization</option>
+            <option value="Cardiology">Cardiology</option>
+            <option value="Dermatology">Dermatology</option>
+            <option value="Pathology">Pathology</option>
+            <option value="Radiation Oncology">Radiation Oncology</option>
+            <!-- Add more options for other specializations -->
+        </select>
+
+        <label for="affiliation">Affiliation:</label>
+        <input type="text" name="affiliation" required>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required>
+
+        <label for="phone">Phone:</label>
+        <input type="text" name="phone" required>
+
+        <label for="type_of_phone_contact">Type of Phone Contact:</label>
+<select name="type_of_phone_contact" required>
+    <option value="">Select Type of Phone Contact</option>
+    <option value="Cell">Cell</option>
+    <option value="LandLine">LandLine</option>
+</select>
+
+
+        <label for="region">Region:</label>
+        <select name="region" required>
+            <option value="">Select Region</option>
+            <option value="East Metro">East Metro</option>
+            <option value="East Non Metro">East Non Metro</option>
+            <option value="West Metro">West Metro</option>
+            <option value="West Non Metro">West Non Metro</option>
+            <option value="North Metro">North Metro</option>
+            <option value="North Non Metro">North Non Metro</option>
+            <option value="South Metro">South Metro</option>
+            <option value="South Non Metro">South Non Metro</option>
+            <option value="ME">ME</option>
+            <option value="APEC">APEC</option>
+            <option value="North Americas">North Americas</option>
+            <option value="EMEA">EMEA</option>
+        </select>
+
+        <label for="cost_to_serve">Cost to Serve:</label>
+        <select name="cost_to_serve" required>
+            <option value="">Select Cost to Serve</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+            <option value="High but Very Important">High but Very Important</option>
+        </select>
+
+        <label for="category">Category:</label>
+<select name="category" required>
+    <option value="">Select Category</option>
+    <option value="Beginner">Beginner</option>
+    <option value="Influencer">Influencer</option>
+    <option value="KoL">KoL</option>
+</select>
+
+
+        <label for="status">Status:</label>
+        <select name="status" required>
+            <option value="">Select Category</option>
+            <option value="Universe">Universe</option>
+            <option value="Opportunity Planning">Opportunity Planning</option>
+            <option value="Develop Solution">Develop Solution</option>
+            <option value="Propose Solution">Propose Solution</option>
+            <option value="Evaluate Solution">Evaluate Solution</option>
+            <option value="Negotiation">Negotiation</option>
+            <option value="Order">Order</option>
+            <option value="Lost">Lost</option>
+            <option value="Dropped">Dropped</option>
+            <option value="Hibernation">Hibernation</option>
+        </select>
+
+        <label for="lead_source">Lead Source:</label>
+    <select name="lead_source" required>
+    <option value="">Select Lead Source</option>
+    <option value="Advertisement">Advertisement</option>
+    <option value="Campaign">Campaign</option>
+    <option value="Cold Call">Cold Call</option>
+    <option value="Consultant">Consultant</option>
+    <option value="Events">Events</option>
+    <option value="Exhibition">Exhibition</option>
+    <option value="Existing client">Existing client</option>
+    <option value="Inward call">Inward call</option>
+    <option value="Just Dial">Just Dial</option>
+    <option value="Reference">Reference</option>
+    <option value="Repair">Repair</option>
+    <option value="Road Show">Road Show</option>
+    <option value="Tender">Tender</option>
+    <option value="Ticket">Ticket</option>
+    <option value="Web">Web</option>
+    <option value="Digital Marketing">Digital Marketing</option>
+    <option value="Enquiry">Enquiry</option>
+    <option value="Key Account">Key Account</option>
+    <option value="Repetitive Customer">Repetitive Customer</option>
+    <option value="Google Sheet">Google Sheet</option>
+    <option value="Competition">Competition</option>
+    <option value="Basic">Basic</option>
+</select>
+
+
+<label for="current_system">Current System:</label>
+<select name="current_system" required>
+    <option value="">Select Current System</option>
+    <option value="Excel sheet">Excel sheet</option>
+    <option value="Google Sheet">Google Sheet</option>
+    <option value="Competition">Competition</option>
+    <option value="Basic">Basic</option>
+</select>
+
+
+<label for="last_action">Last Action:</label>
+<select name="last_action" required>
+    <option value="">Select Last Action</option>
+    <option value="Cold Call">Cold Call</option>
+    <option value="Email communication">Email communication</option>
+    <option value="In present meeting">In present meeting</option>
+    <option value="Presentation">Presentation</option>
+    <option value="Demo">Demo</option>
+    <option value="Offer submission">Offer submission</option>
+</select>
+
+
+<label for="lead_priority">Lead Priority:</label>
+<select name="lead_priority" required>
+    <option value="">Select Lead Priority</option>
+    <option value="Urgent">Urgent</option>
+    <option value="Medium">Medium</option>
+    <option value="Normal">Normal</option>
+</select>
+
+        <label for="date_of_connect_presentation">Date of Connect / Presentation:</label>
+        <input type="text" name="date_of_connect_presentation" required>
+
+        <label for="sales_rep">Sales Rep:</label>
+<select name="sales_rep" required>
+    <option value="">Select Last Action</option>
+    <option value="Mr. 1">Mr. 1</option>
+    <option value="Mr. 2">Mr. 2</option>
+    <option value="Mr. 3">Mr. 3</option>
+    <option value="Mr. 4">Mr. 4</option>
+    <option value="Mr. 5">Mr. 5</option>
+    <option value="Mr. 6">Mr. 6</option>
+    <option value="Mr. 7">Mr. 7</option>
+    <option value="Mr. 8">Mr. 8</option>
+    <option value="Mr. 9">Mr. 9</option>
+    <option value="Mr. 10">Mr. 10</option>
+    <option value="Mr. 11">Mr. 11</option>
+    <option value="Mr. 12">Mr. 12</option>
+    <option value="Mr. 13">Mr. 13</option>
+    <option value="Mr. 14">Mr. 14</option>
+    <option value="Mr. 15">Mr. 15</option>
+    <option value="Mr. 16">Mr. 16</option>
+    <option value="Mr. 17">Mr. 17</option>
+    <option value="Mr. 18">Mr. 18</option>
+    <option value="Mr. 19">Mr. 19</option>
+    <option value="Mr. 20">Mr. 20</option>
+</select>
+
+
+<label for="reason_to_buy">Reason to Buy:</label>
+<select name="reason_to_buy" required>
+    <option value="">Select Reason to Buy</option>
+    <option value="Research">Research</option>
+    <option value="Patient Management">Patient Management</option>
+</select>
+
+
+        <label for="subcategory_reasons_to_buy">Subcategory of Reasons to Buy:</label>
+<select name="subcategory_reasons_to_buy" required>
+    <option value="">Select Subcategory of Reasons to Buy</option>
+    <option value="Streamline Patient treatment">Streamline Patient treatment</option>
+    <option value="Increased efficiency">Increased efficiency</option>
+    <option value="Improved accuracy">Improved accuracy</option>
+    <option value="Quality assurance">Quality assurance</option>
+    <option value="Compliance">Compliance</option>
+    <option value="Integration with image devices">Integration with image devices</option>
+    <option value="Data management & Analysis">Data management & Analysis</option>
+    <option value="Resource optimisation">Resource optimisation</option>
+    <option value="Collaboration">Collaboration</option>
+    <option value="Continuous Improvement">Continuous Improvement</option>
+    <option value="Research Enablement">Research Enablement</option>
+</select>
+
+        <input type="submit" value="Add Doctor">
+    </form>
+</body>
+</html>
